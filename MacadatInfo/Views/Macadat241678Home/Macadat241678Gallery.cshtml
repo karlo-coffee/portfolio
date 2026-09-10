@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "Gallery - Macadat241678";
+}
+
+<style>
+    /* THEME OVERRIDE FOR DARK MODE AESTHETIC */
+    body {
+        background: linear-gradient(135deg, #2c3e50, #bdc3c7) !important;
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    .about-wrapper {
+        display: flex;
+        min-height: 85vh;
+        margin: 30px auto;
+        width: 95%;
+        background: #0d1b2a !important;
+        border-radius: 30px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        overflow: hidden;
+    }
+
+    .sidebar {
+        flex: 0 0 220px;
+        background: linear-gradient( to right, #1F1C2C,#928DAB );
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* REFINED SIDE-ENTRY ROLL ANIMATIONS */
+    .profile-roll {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid #fdbb2d;
+        object-fit: cover;
+        animation: sideRollIn 1.0s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+        .profile-roll.rolling-out {
+            animation: sideRollOut 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
+        }
+
+    @@keyframes sideRollIn {
+        0% {
+            width: 150px;
+            height: 150px;
+            transform: translateX(400px) rotate(-360deg);
+            opacity: 0;
+        }
+
+        100% {
+            width: 60px;
+            height: 60px;
+            transform: translateX(0) rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes sideRollOut {
+        0% {
+            width: 60px;
+            height: 60px;
+            transform: translateX(0) rotate(0deg);
+            opacity: 1;
+        }
+
+        100% {
+            width: 150px;
+            height: 150px;
+            transform: translateX(400px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* GALLERY GRID STYLING */
+    .content-section {
+        flex: 1;
+        padding: 40px;
+        color: white;
+        overflow-y: auto;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .gallery-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: #fdbb2d;
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .project-tag {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        background: rgba(0,0,0,0.8);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.65rem;
+        color: #fdbb2d;
+        font-weight: bold;
+    }
+
+    /* VIEWER MODAL */
+    #mediaViewer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+        #mediaViewer img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid #fdbb2d;
+            border-radius: 8px;
+        }
+
+    .nav-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: rgba(255,255,255,0.1);
+        color: #fdbb2d;
+        border-radius: 8px;
+        text-decoration: none !important;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+</style>
+
+<div class="about-wrapper">
+    <aside class="sidebar">
+        <img id="profileImage" src="~/Content/Image/Portrait.kinjihakari.png" class="profile-roll" alt="Macadat" />
+        <h4 style="color:white; margin-top:15px;">Archives</h4>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem;">Project Portfolio</p>
+        <div onclick="exitToHome()" class="nav-btn">BACK TO MENU</div>
+    </aside>
+
+    <main class="content-section">
+        <h2 style="letter-spacing: 2px;">DEVELOPMENT & COMMUNITY</h2>
+        <p style="opacity: 0.7; font-size: 0.9rem;">A compilation of systems development and event highlights.</p>
+
+        <div class="gallery-grid">
+            <!-- NEWEST ADDITIONS -->
+            <div class="gallery-item" onclick="openFull(this)">
+                <img src="~/Content/Image/495087221_1001478575472510_5917131970412865263_n.jpg" />
+                <div class="project-tag">JUJUTHU KAITHEN</div>
+            </div>
+            <div class="gallery-item" onclick="openFull(this)">
+                <img src="~/Content/Image/495960135_682779417720650_836505807888622618_n.jpg" />
+                <div class="project-tag">BARBER SHOP</div>
+            </div>
+
+            <!-- CORE PROJECTS -->
+            <div class="gallery-item" onclick="openFull(this)">
+                <img src="~/Content/Image/Screenshot 2026-05-06 094058.png" />
+                <div class="project-tag">PROJECT: OLYMPIA GYM</div>
+            </div>
+            <div class="gallery-item" onclick="openFull(this)">
+                <img src="~/Content/Image/Screenshot 2026-05-06 094434.png" />
+                <div class="project-tag">PROJECT: I/O</div>
+            </div>
+
+            <!-- EVENT HIGHLIGHTS -->
+            <div class="gallery-item" onclick="openFull(this)">
+                <img src="~/Content/Image/5c904f11-aee9-41db-93e9-1acdfd000ec6.jfif" />
+                <div class="project-tag">UPDATE: COMMUNITY GATHERING</div>
+            </div>
+            <div class="gallery-item" onclick="openFull(this)">
+                <img src="~/Content/Image/8677fe60-fae5-4746-93ee-5a421219b459.jfif" />
+                <div class="project-tag">UPDATE: COMMUNITY EVENT</div>
+            </div>
+            <div class="gallery-item" onclick="openFull(this)">
+                <img src="~/Content/Image/eb748509-2cdb-4c9e-92ee-ae52d462b641.jfif" />
+                <div class="project-tag">UPDATE: COMMUNITY</div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- FULLSCREEN VIEWER -->
+<div id="mediaViewer" onclick="this.style.display='none'">
+    <img id="viewerImg" src="" />
+</div>
+
+<script>
+    function openFull(el) {
+        const viewer = document.getElementById('mediaViewer');
+        const img = document.getElementById('viewerImg');
+        img.src = el.querySelector('img').src;
+        viewer.style.display = 'flex';
+    }
+
+    function exitToHome() {
+        document.getElementById('profileImage').classList.add('rolling-out');
+        setTimeout(() => {
+            window.location.href = '@Url.Action("Macadat241678Index", "Macadat241678Home")';
+        }, 800);
+    }
+</script>

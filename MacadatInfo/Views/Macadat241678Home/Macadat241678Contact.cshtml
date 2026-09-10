@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "Contact - Macadat241678";
+}
+
+<style>
+    /* CYBER HUD GRID OVERLAY */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    body {
+        background-color: #2c3e50 !important; /* Stone Gray Base */
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .project-wrapper {
+        display: flex;
+        min-height: 85vh;
+        margin: 30px auto;
+        width: 95%;
+        background: rgba(13, 27, 42, 0.95) !important;
+        border-radius: 30px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* SIDEBAR - Consistent Purple/Grey Gradient */
+    .sidebar {
+        flex: 0 0 220px;
+        background: linear-gradient(to right, #1F1C2C, #928DAB);
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* PROFILE ANIMATIONS */
+    .profile-roll {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid #fdbb2d;
+        object-fit: cover;
+        animation: rollIn 1.0s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+        .profile-roll.rolling-out {
+            animation: rollOut 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
+        }
+
+    @@keyframes rollIn {
+        0% {
+            width: 180px;
+            height: 180px;
+            transform: translate(80px, 180px) rotate(-180deg);
+            opacity: 0;
+        }
+
+        100% {
+            width: 60px;
+            height: 60px;
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes rollOut {
+        0% {
+            width: 60px;
+            height: 60px;
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 1;
+        }
+
+        100% {
+            width: 180px;
+            height: 180px;
+            transform: translate(80px, 180px) rotate(180deg);
+            opacity: 0;
+        }
+    }
+
+    /* CONTENT AREA */
+    .content-section {
+        flex: 1;
+        padding: 50px;
+        color: white;
+        background: #0d1b2a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-container {
+        width: 100%;
+        max-width: 650px;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 25px;
+        padding: 40px;
+        box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
+    }
+
+    .contact-item {
+        margin-bottom: 20px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        border-left: 4px solid #fdbb2d;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block;
+        text-decoration: none !important;
+        color: white;
+    }
+
+        .contact-item:hover {
+            transform: translateX(12px);
+            background: rgba(253, 187, 45, 0.08);
+            border-left-width: 8px;
+        }
+
+    .label {
+        display: block;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: #fdbb2d;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        font-weight: 800;
+        opacity: 0.8;
+    }
+
+    .value {
+        font-size: 1.1rem;
+        font-weight: 400;
+        word-break: break-all;
+    }
+
+    .nav-btn {
+        margin-top: 25px;
+        padding: 12px 20px;
+        background: rgba(255,255,255,0.1);
+        color: #fdbb2d;
+        border-radius: 12px;
+        text-decoration: none !important;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+</style>
+
+<div class="project-wrapper">
+    <aside class="sidebar">
+        <img id="profileImage" src="~/Content/Image/Portrait.kinjihakari.png" class="profile-roll" alt="Macadat" />
+        <h4 style="color:white; margin-top:20px; text-align:center; font-weight: 700;">Communication</h4>
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 1px;">PORTAL ACTIVE</p>
+
+        <a href="javascript:void(0);" onclick="exitAndGoHome()" class="nav-btn">BACK TO MENU</a>
+    </aside>
+
+    <main class="content-section">
+        <div class="contact-container">
+            <h2 style="text-transform: uppercase; letter-spacing: 5px; text-align: center; margin-bottom: 10px; color: #fdbb2d;">Connect With Me</h2>
+            <p style="color: #bdc3c7; text-align: center; margin-bottom: 35px; font-size: 0.9rem;">Open for collaborations, technical inquiries, and project discussions.</p>
+
+            <div class="glass-card">
+                <!-- EMAIL -->
+                <a href="mailto:macadat.karlito.ritaga1@email" class="contact-item">
+                    <span class="label">Primary Email</span>
+                    <span class="value">macadat.karlito.ritaga1@email</span>
+                </a>
+
+                <!-- PHONE -->
+                <div class="contact-item">
+                    <span class="label">Mobile Access</span>
+                    <span class="value">09090909090</span>
+                </div>
+
+                <!-- FACEBOOK -->
+                <a href="https://facebook.com/karlo.macadat" target="_blank" class="contact-item">
+                    <span class="label">Facebook Portfolio</span>
+                    <span class="value">@@peysbuknimacadat</span>
+                </a>
+
+                <!-- LOCATION -->
+                <div class="contact-item">
+                    <span class="label">Base Location</span>
+                    <span class="value">1007 Mountain Drive, Gotham City</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    function exitAndGoHome() {
+        const img = document.getElementById('profileImage');
+        if (img) {
+            img.classList.add('rolling-out');
+        }
+
+        setTimeout(function() {
+            window.location.href = '@Url.Action("Macadat241678Index", "Macadat241678Home")';
+        }, 750);
+    }
+</script>

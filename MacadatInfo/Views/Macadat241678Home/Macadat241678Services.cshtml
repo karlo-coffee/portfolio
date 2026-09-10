@@ -1,0 +1,241 @@
+﻿@{
+    ViewBag.Title = "Services - Macadat241678";
+}
+
+<style>
+    /* CYBER HUD GRID OVERLAY */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    body {
+        background-color: #2c3e50 !important; /* Stone Gray Base */
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .project-wrapper {
+        display: flex;
+        min-height: 85vh;
+        margin: 30px auto;
+        width: 95%;
+        background: rgba(13, 27, 42, 0.95) !important;
+        border-radius: 30px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* SIDEBAR - Consistent Purple/Grey Gradient */
+    .sidebar {
+        flex: 0 0 220px;
+        background: linear-gradient(to right, #1F1C2C, #928DAB);
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* PROFILE ANIMATIONS */
+    .profile-roll {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid #fdbb2d;
+        object-fit: cover;
+        animation: rollIn 1.0s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+        .profile-roll.rolling-out {
+            animation: rollOut 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards !important;
+        }
+
+    @@keyframes rollIn {
+        0% {
+            width: 180px;
+            height: 180px;
+            transform: translate(80px, 180px) rotate(-180deg);
+            opacity: 0;
+        }
+
+        100% {
+            width: 60px;
+            height: 60px;
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes rollOut {
+        0% {
+            width: 60px;
+            height: 60px;
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 1;
+        }
+
+        100% {
+            width: 180px;
+            height: 180px;
+            transform: translate(80px, 180px) rotate(180deg);
+            opacity: 0;
+        }
+    }
+
+    /* CONTENT AREA */
+    .content-section {
+        flex: 1;
+        padding: 50px;
+        color: white;
+        background: #0d1b2a;
+        overflow-y: auto;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+
+    .service-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 35px 25px;
+        text-align: center;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+        .service-card:hover {
+            background: rgba(253, 187, 45, 0.05);
+            border-color: rgba(253, 187, 45, 0.5);
+            transform: translateY(-8px);
+        }
+
+    .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        display: block;
+        filter: drop-shadow(0 0 10px rgba(253, 187, 45, 0.3));
+    }
+
+    .service-card h3 {
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        color: #fff;
+    }
+
+    .service-card p {
+        font-size: 0.85rem;
+        color: #bdc3c7;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .price-tag {
+        display: inline-block;
+        font-weight: 800;
+        color: #fdbb2d;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 1px solid rgba(253, 187, 45, 0.3);
+        padding: 4px 12px;
+        border-radius: 5px;
+    }
+
+    .nav-btn {
+        margin-top: 25px;
+        padding: 12px 20px;
+        background: rgba(255,255,255,0.1);
+        color: #fdbb2d;
+        border-radius: 12px;
+        text-decoration: none !important;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+</style>
+
+<div class="project-wrapper">
+    <aside class="sidebar">
+        <img id="profileImage" src="~/Content/Image/Portrait.kinjihakari.png" class="profile-roll" alt="Macadat" />
+        <h4 style="color:white; margin-top:20px; text-align:center; font-weight: 700;">Abilities</h4>
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 1px;">READY FOR HIRE</p>
+
+        <a href="javascript:void(0);" onclick="exitAndGoHome()" class="nav-btn">BACK TO MENU</a>
+    </aside>
+
+    <main class="content-section">
+        <h2 style="text-transform: uppercase; letter-spacing: 3px; color: #fdbb2d; margin-top: 0;">Available Services</h2>
+        <p style="color: #bdc3c7; font-size: 0.95rem;">Professional solutions specialized in Information Technology and Creative Arts.</p>
+
+        <div class="services-grid">
+            <!-- Web Development -->
+            <div class="service-card">
+                <span class="service-icon">💻</span>
+                <h3>Web Development</h3>
+                <p>Building responsive, logic-driven web applications using ASP.NET MVC and Bootstrap 5.</p>
+                <span class="price-tag">Primary Skill</span>
+            </div>
+
+            <!-- UI/UX Design -->
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>UI/UX Design</h3>
+                <p>Creating immersive interfaces with a focus on e-sports aesthetics and gamified user experiences.</p>
+                <span class="price-tag">Creative Skill</span>
+            </div>
+
+            <!-- Hardware Maintenance -->
+            <div class="service-card">
+                <span class="service-icon">🛠️</span>
+                <h3>Hardware Services</h3>
+                <p>Desktop troubleshooting, PC building, and preventive maintenance for high-performance systems.</p>
+                <span class="price-tag">Technical Skill</span>
+            </div>
+
+            <!-- System Architecture -->
+            <div class="service-card">
+                <span class="service-icon">⚙️</span>
+                <h3>System Architecture</h3>
+                <p>Developing backend logic for membership systems, archives, and registry databases.</p>
+                <span class="price-tag">Core Skill</span>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    function exitAndGoHome() {
+        const img = document.getElementById('profileImage');
+        if (img) {
+            img.classList.add('rolling-out');
+        }
+
+        setTimeout(function() {
+            window.location.href = '@Url.Action("Macadat241678Index", "Macadat241678Home")';
+        }, 750);
+    }
+</script>
